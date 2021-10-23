@@ -1,3 +1,26 @@
-module.exports = {
-  reactStrictMode: true,
-}
+const withImages = require('next-images')
+module.exports = withImages({
+  fileExtensions: ["jpg", "jpeg", "png", "gif"],
+  inlineImageLimit: false,
+  webpack(config, options) {
+    return config
+  }
+})
+// module.exports = {
+//   reactStrictMode: true,
+//   webpack: (config, options) => {
+//     config.module.rules.push({
+//       test: /\.(svg|png|jpe?g|gif|mp4)$/i,
+//       use: [
+//         {
+//           loader: 'file-loader',
+//           options: {
+//             publicPath: '/_next',
+//             name: 'static/media/[name].[hash].[ext]'
+//           }
+//         }
+//       ]
+//     })
+//     return config
+//   }
+// }
